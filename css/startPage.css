@@ -1,0 +1,64 @@
+body{
+    overflow: hidden;
+    margin: 0;
+}
+
+.wrapper{
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    background-image: url(../img/wood.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+    ". . . . . . . . . . . ."
+    "fh fh . . . . . . . . . ."
+    "fh fh hd hd hd hd hd hd hd hd . ."
+    ". . pp pp pp . . cp cp cp . ."
+    ". . . . . . . . . . . ."
+    ". . . . . . . . . . . ."
+    ;
+    gap: 30px;
+}
+
+header{
+    grid-area: hd;
+    text-align: center;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    background-color: #806000;
+    border-radius: 50px;
+    border: 3px solid rgb(255, 255, 255);
+    color: white;
+}
+
+.playerVSplayer{
+    grid-area: pp;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    background-color: #806000;
+    color: white;
+    border: 3px solid white;
+}
+
+.computerVSplayer{
+    grid-area: cp;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    background-color: #806000;
+    color: white;
+    border: 3px solid white;
+}
+
+.box{
+    border-radius: 10px;
+}
+
+.fairyhenk{
+    grid-area: fh;
+    background-image: url(../img/unnamed.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}

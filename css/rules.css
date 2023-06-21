@@ -1,0 +1,58 @@
+body{
+    overflow: hidden;
+    margin: 0;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/wood.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas: 
+    ". . . . . . . . . . . ."
+    ". tx tx tx . . . . vd vd vd vd"
+    ". tx tx tx . . . . vd vd vd vd"
+    ". tx tx tx . . . . vd vd vd vd"
+    ". tx tx tx . . . . vd vd vd vd"
+    ". tx tx tx . . . . vd vd vd vd"
+    ". tx tx tx . . . . vd vd vd vd"
+    ". . . . . . . . . . bk bk"
+    ;
+}
+
+.text{
+    grid-area: tx;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    background-color: #806000;
+    color: white;
+    border: 3px solid white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
+.video{
+    grid-area: vd;
+    padding-top: 130px;
+}
+
+video{
+    height: 200px;
+    width: 400px;
+    border: 3px solid white;
+}
+
+.back{
+    grid-area: bk;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    background-color: #806000;
+    color: white;
+    border: 3px solid white;
+    border-radius: 10px;
+}

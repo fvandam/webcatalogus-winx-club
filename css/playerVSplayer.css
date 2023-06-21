@@ -1,0 +1,216 @@
+*, * ::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
+body{
+    margin: 0;
+    overflow:hidden;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/wood.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas: 
+    ". . hd hd hd hd hd hd hd hd . ."
+    ". . . . bd bd bd bd bd . . ."
+    ". . . . bd bd bd bd bd . . ."
+    ". . . . bd bd bd bd bd . . ."
+    ". . . . bd bd bd bd bd . . ."
+    ". . . . bd bd bd bd bd . . ."
+    ". . . . bd bd bd bd bd . . ."
+    ". . . . . . . . rl rl hm hm"
+    ;
+    gap: 10px;
+}
+
+/* .box{
+    border: 1px solid black;
+    
+} */
+
+header{
+    grid-area: hd;
+    background-color: #806000;
+    border-radius: 10px;
+    border: 3px solid white;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    color: white;
+    text-align: center;
+}
+
+.board{
+    grid-area: bd;
+    background-image: url(../img/plank.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.lumberjackHenk{
+    grid-column: 4/7;
+    grid-row: 4/8;
+    background-image: url(../img/unnamed\ \(1\).png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.rules{
+    grid-area: rl;
+    background-color: #806000;
+    border-radius: 10px;
+    border: 3px solid white;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    color: white;
+}
+
+.home{
+    grid-area: hm;
+    background-color: #806000;
+    border-radius: 10px;
+    border: 3px solid white;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    color: white;
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(3n +1) {
+    border-left: none;
+}
+
+.cell:nth-child(3n +3) {
+    border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+    border-bottom: none;
+}
+
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+    background-color: rgb(255, 255, 255);
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    background-color: rgb(30, 30, 30);
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+    position: absolute;
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after, 
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+}
+
+.cell.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+
+}
+
+.cell.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.winning-message button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    pad: .25em .5em;
+    cursor: pointer;
+}
+
+.winning-message button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.show {
+    display: flex;
+}
